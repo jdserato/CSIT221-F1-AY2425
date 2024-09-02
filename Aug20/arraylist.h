@@ -3,11 +3,22 @@
 using namespace std;
 // ArrayList is a subclass of List
 class ArrayList : public List {
-	int array[5];
 	int size = 0;
+	int* array;
+	int cap;
 	
 	public:
+	ArrayList() {
+		cap = 5;
+		array = (int*)malloc(cap * sizeof(int));
+	}
 	void add(int num) {
+		if (size >= cap) {
+			cap*=1.5;
+			cout << "Prev addr " << array;
+			array = (int*) realloc(array, cap * sizeof(int));
+			cout << " and new addr " << array << endl;
+		}
 		cout << "Add " << num << endl;
 		array[size++] = num;
 	}
@@ -30,7 +41,7 @@ class ArrayList : public List {
 	}
 	
 	void print() {
-		cout << "Size: "<< size <<endl;
+		cout << "Size: "<< size << "/" << cap <<endl;
 		for (int i = 0; i < size; i++) {
 			cout << array[i] << " ";
 		}
