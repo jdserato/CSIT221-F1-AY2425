@@ -12,7 +12,11 @@ class ArrayList : public List {
 		cap = 5;
 		array = (int*)malloc(cap * sizeof(int));
 	}
-	void add(int num) {
+	
+	int removeLast() {
+		return array[--size];
+	}
+	void add(int num) { // addLast
 		if (size >= cap) {
 			cap*=1.5;
 			cout << "Prev addr " << array;
@@ -38,6 +42,10 @@ class ArrayList : public List {
 			}
 		}
 		return -1;
+	}
+	
+	int _size() {
+		return size;
 	}
 	
 	void print() {

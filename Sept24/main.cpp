@@ -19,7 +19,19 @@ int main(int argc, char** argv) {
 	list->addHead(1);
 	list->addTail(8);
 	list->print(); // 1 -> 7 -> 13 -> 4 -> 8
-	cout << "Remove 13: " << list->remove(13) << endl;
+	cout << "Remove 13: " << list->remove(8) << endl;
+	list->print();
+	cout << "List is " << list << endl;
+	delete list;
+	cout << "List is " << list << endl;
+	list = new LinkedList();
+	list->addHead(913);
+	list->addTail(94);
+	list->addHead(97);
+	list->addTail(92);
+	list->addHead(98);
+	list->addHead(99);
+	list->addTail(916);
 	list->print();
 	return 0;
 }
