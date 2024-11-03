@@ -16,6 +16,7 @@ class ArrayList : public List {
 	int removeLast() {
 		return array[--size];
 	}
+	
 	void add(int num) { // addLast
 		if (size >= cap) {
 			cap*=1.5;
@@ -25,6 +26,33 @@ class ArrayList : public List {
 		}
 		cout << "Add " << num << endl;
 		array[size++] = num;
+	}
+	
+	void addFirst(int num) {
+		if (size >= cap) {
+			cap*=1.5;
+			cout << "Prev addr " << array;
+			array = (int*) realloc(array, cap * sizeof(int));
+			cout << " and new addr " << array << endl;
+		}
+		// Shift elements to the right
+		for (int i = size-1; i >= 0; i--) {
+			array[i+1] = array[i];
+		}
+		size++;
+		array[0] = num;
+	}
+	
+	int removeFirst() {
+		// Shift elements to the right
+		// 4 6 8 10 10 
+		//       i 
+		int tmp = array[0];
+		for (int i = 0; i < size-1; i++) {
+			array[i] = array[i+1];
+		}
+		size--;
+		return tmp;
 	}
 	
 	int get(int pos) {
@@ -46,7 +74,7 @@ class ArrayList : public List {
 	
 	int _size() {
 		return size;
-	}
+	} 
 	
 	void print() {
 		cout << "Size: "<< size << "/" << cap <<endl;

@@ -1,43 +1,37 @@
 #include <iostream>
-#include "stackarray.h"
-using namespace std;
+#include <stack>
+#include "queuearray.h"
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int main() {
-	Stack* stack = new StackArray();
-	stack->push(5);
-	stack->push(3);
-	cout << "Size: " << stack->size() << endl; // 2
-	cout << "Pop: " << stack->pop() << endl; // 3
-	cout << "Pop: " << stack->pop() << endl; // 5
-	cout << "Is Empty: " << stack->isEmpty() << endl; // 1
-	stack->push(7); 
-	stack->push(9);
-	stack->push(4);
-	cout << "Pop: " << stack->pop() << endl; // 4
-	cout << "Is Empty: " << stack->isEmpty() << endl; // 0
-	stack->push(6);
-	stack->push(8);
-	cout << "Pop: " << stack->pop() << endl; // 8
-	cout << "Size: " << stack->size() << endl; // 3
-//	char op;
-//	int num;
-//	while (true) {
-//		cout << "op: ";
-//		cin >> op;
-//		switch(op) {
-//			case 'a':
-//				cin >> num;
-//				list->add(num);
-//				break;
-//			case 'p':
-//				list->print();
-//				break; 
-//		}
-//	}
-//	list->print();
-//	cout << sizeof(ArrayList);
-//	cout << "2nd elem: "<<list->get(2)<<endl;
-////	cout << "Removing 13 at pos " <<list->remove(13)<<endl;
-//	list->print();
+int main(int argc, char** argv) {
+	Queue* queue = new QueueArray();
+	char op;
+	int num;
+	while (true) {
+	try{
+		cout << "Op: ";
+		cin >> op;
+		switch (op) {
+			case 'e':
+				cin >> num;
+				queue->enqueue(num);
+				break;
+			case 'd':
+				cout << "Dequeued: " << queue->dequeue() << endl;
+				break;
+			case 'f':
+				cout << "First: " << queue->first() << endl;
+				break;
+			case 's':
+				cout << "Size: " << queue->size() << endl;
+				break;
+			case '?':
+				cout << "IsEmpty: " << queue->isEmpty() << endl;
+				break;
+		}
+	} catch (...) {
+		cout << "EHE";
+	}
+	}
 	return 0;
 }

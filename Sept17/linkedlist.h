@@ -9,7 +9,11 @@ class LinkedList : public List {
 	int size;
 	
 	public:
-	void add(int num) {
+	int getSize() {
+		return size;
+	}
+		
+	void add(int num) { // addTail
 		node* n = (node*) calloc(1, sizeof(node));
 		n->elem = num;
 		if (tail) {
@@ -21,6 +25,7 @@ class LinkedList : public List {
 		}
 		size++;
 	}
+	
 	void print() {
 		if (size == 0) {
 			cout << "Empty" << endl;

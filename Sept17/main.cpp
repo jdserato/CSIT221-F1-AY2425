@@ -1,24 +1,32 @@
 #include <iostream>
-#include "linkedlist.h"
+#include "singlyqueue.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
-	List* list = new LinkedList();
-	list->add(13);
-	list->add(4);
-	list->add(7);
-	list->add(2);
-	list->add(8);
-	list->add(9);
-	list->add(16);
-	list->print();
-	cout << "Fifth Element: " << list->get(5) << endl;
-	cout << "Remove 8: " << list->remove(8) << endl;
-	cout << "Fifth Element: " << list->get(5) << endl;
-	list->print();
-	cout << "Remove 16: " << list->remove(16) << endl;
-	list->print();
-	cout << "Remove 13: " << list->remove(13) << endl;
-	list->print();
+	Queue* queue = new SinglyQueue();
+	char op;
+	int num;
+	while (true) {
+		cout << "Op: ";
+		cin >> op;
+		switch (op) {
+			case 'e':
+				cin >> num;
+				queue->enqueue(num);
+				break;
+			case 'd':
+				cout << "Dequeued: " << queue->dequeue() << endl;
+				break;
+			case 'f':
+				cout << "First: " << queue->first() << endl;
+				break;
+			case 's':
+				cout << "Size: " << queue->size() << endl;
+				break;
+			case '?':
+				cout << "IsEmpty: " << queue->isEmpty() << endl;
+				break;
+		}
+	}
 	return 0;
 }
